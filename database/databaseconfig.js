@@ -1,16 +1,21 @@
 const mongoose = require("mongoose");
+
 function setup() {
-  const url=process.env.NODE_ENV==="development"
-  ? `${process.env.DEV_DB_URL}${process.env.DEV_DB_LABEL}`
-  :`${process.env.PROD_DB_URL}${process.env.PROD_DB_LABEL}`;
+  const url = process.env.NODE_ENV === "development"
+    ? `${process.env.DEV_DB_URL}${process.env.DEV_DB_LABEL}`
+    : `${process.env.PROD_DB_URL}${process.env.PROD_DB_LABEL}`;
   
-   mongoose
-    .connect(url)
+  mongoose
+    .connect(url, {
+      serverSelectionTimeoutMS: 5000,  // Adjust the connection timeout as needed
+      socketTimeoutMS: 45000,          // Adjust the socket timeout as needed
+    })
     .then((response) => {
-      console.log("connection success");
+      console.log("Database connection successful");
     })
     .catch((err) => {
-      console.log(err);
+      console.error("Database connection error:", err);
     });
 }
+
 module.exports = { setup };
