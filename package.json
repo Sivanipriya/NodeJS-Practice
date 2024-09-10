@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "main": "req_from_arr.js",
   "scripts": {
+    "start": "node req_from_arr.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon req_from_arr.js"
   },
