@@ -7,7 +7,7 @@ function setup() {
   
   mongoose
     .connect(url, {
-      serverSelectionTimeoutMS: 5000,  // Adjust the connection timeout as needed
+      serverSelectionTimeoutMS: 10000,  // Adjust the connection timeout as needed
       socketTimeoutMS: 45000,          // Adjust the socket timeout as needed
     })
     .then((response) => {
